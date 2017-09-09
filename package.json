@@ -53,7 +53,8 @@
         {
           "arraysInObjects": false
         }
-      ]
+      ],
+			"prefer-arrow-callback": "warn"
     }
   },
   "scripts": {
