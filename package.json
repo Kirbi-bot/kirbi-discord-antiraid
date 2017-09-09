@@ -1,0 +1,61 @@
+{
+  "name": "kirbi-discord-antiraid",
+  "description": "adds discord-antiraid support to Kirbi",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "readme": "https://github.com/Richardson-Media-House/kirbi-discord-antiraid#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Richardson-Media-House/kirbi-discord-antiraid.git"
+  },
+  "author": {
+    "name": "Joseph Moran III",
+    "email": "joseph.moraniii@gmail.com",
+    "url": "https://josephmoran.co"
+  },
+  "contributors": [
+    {
+      "name": "Matt Carroll",
+      "email": "admin@develogix.com",
+      "url": "https://develogix.com"
+    },
+    {
+      "name": "Nate Richardson",
+      "email": "hello@naterichardson.com",
+      "url": "https://naterichardson.com"
+    }
+  ],
+  "main": "antiraid.js",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "kirbi-discord": "github:Richardson-Media-House/kirbi-discord",
+    "kirbi-discord-antiraid": "github:Richardson-Media-House/kirbi-discord-antiraid"
+  },
+  "bugs": {
+    "url": "https://github.com/Richardson-Media-House/kirbi-discord-antiraid/issues"
+  },
+  "devDependencies": {
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "rules": {
+      "linebreak-style": "off",
+      "no-prototype-builtins": "warn",
+      "radix": "warn",
+      "guard-for-in": "warn",
+      "import/no-unresolved": "off",
+      "camelcase": "off",
+      "no-negated-condition": "warn",
+      "object-curly-spacing": [
+        "error",
+        "always",
+        {
+          "arraysInObjects": false
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "test": "xo"
+  }
+}
