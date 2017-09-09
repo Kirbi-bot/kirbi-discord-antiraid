@@ -29,7 +29,8 @@
   "dependencies": {
     "chalk": "^2.1.0",
     "kirbi-discord": "github:Richardson-Media-House/kirbi-discord",
-    "kirbi-discord-antiraid": "github:Richardson-Media-House/kirbi-discord-antiraid"
+    "kirbi-discord-antiraid": "github:Richardson-Media-House/kirbi-discord-antiraid",
+    "mongoose": "^4.11.10"
   },
   "bugs": {
     "url": "https://github.com/Richardson-Media-House/kirbi-discord-antiraid/issues"

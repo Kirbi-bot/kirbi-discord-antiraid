@@ -34,7 +34,7 @@ module.exports = function (Kirbi) {
 						cb('Unable to set your guild settings for antiraid.', msg);
 						return;
 					}
-					const settings = new GuildAntiraidSettings({guildId: guild.id, channelId: guild.id});
+					const settings = new GuildAntiraidSettings({ guildId: guild.id, channelId: guild.id });
 					Kirbi.antiraidGuilds[msg.guild.id] = new AntiraidSettings(guild, settings);
 					antiraidSettings = Kirbi.antiraidGuilds[msg.guild.id];
 				}
@@ -74,18 +74,18 @@ module.exports = function (Kirbi) {
 				try {
 					antiraidSettings.settings[parameter] = value;
 					GuildAntiraidSettings.findOneAndUpdate(
-						{guildId: antiraidSettings.settings.guildId},
+						{ guildId: antiraidSettings.settings.guildId },
 						antiraidSettings.settings,
-						{upsert: true},
+						{ upsert: true },
 						function (error) {
 							if (error) {
-								console.log(chalk.red('Error: ' + error));
+								console.log(chalk.red(`Error: ${error}`));
 								cb(`Something went wrong saving the ${parameter} value. This change will be lost on the next Kirbi restart.`, msg);
 							}
 						}
-					)
+					);
 				} catch (err) {
-					console.log(chalk.red('Error: '+ error));
+					console.log(chalk.red(`Error: ${err}`));
 					message = 'Something went wrong setting the antiraid setting.';
 				}
 
