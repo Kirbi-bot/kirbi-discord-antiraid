@@ -16,8 +16,9 @@ module.exports = function (Kirbi) {
 			usage: '<parameter> <new value?>',
 			description: 'Accesses the servers antiraid parameters. Adding a value will update the parameter.',
 			process: (msg, suffix, isEdit, cb) => {
+				const member = msg.member;
 				const parameters = suffix.split(' ');
-				const parameter = parameters[0].trim();
+				const parameter = parameters.shift().trim();
 				const settingTypes = AntiraidSettings.settingTypes();
 
 				// There must be at least one parameter passed to the command.
@@ -34,7 +35,10 @@ module.exports = function (Kirbi) {
 						cb('Unable to set your guild settings for antiraid.', msg);
 						return;
 					}
-					const settings = new GuildAntiraidSettings({ guildId: guild.id, channelId: guild.id });
+					const settings = new GuildAntiraidSettings({ 
+						guildId: guild.id, 
+						channelId: guild.id 
+					});
 					Kirbi.antiraidGuilds[msg.guild.id] = new AntiraidSettings(guild, settings);
 					antiraidSettings = Kirbi.antiraidGuilds[msg.guild.id];
 				}
@@ -48,9 +52,11 @@ module.exports = function (Kirbi) {
 
 				// If there is only one parameter, we just want to display the current value.
 				let value = antiraidSettings.settings[parameter];
-				if (parameters.length === 1) {
+				if (parameters.length === 0) {
 					if (settingType === 'Channel') {
 						value = value ? value.id : 'none';
+					} else if (parameter === 'welcomeMessage') {
+						value = unescape(value);
 					}
 
 					cb(`That ${parameter} antiraid setting is currently set to '${value}'.`, msg);
@@ -58,16 +64,18 @@ module.exports = function (Kirbi) {
 				}
 
 				// Ensure that the value is properly typed for the antraid setting.
-				value = parameters[1].trim();
+				value = parameters.join(' ').trim();
 				let message = `The ${parameter} antiraid setting has been set to '${value}'.`;
 				switch (settingType) {
-					case 'int': {
+					case 'int': 
 						value = Math.max(0, Number.parseInt(value, 10));
 						break;
-					}
-					default: {
+					case 'string': 
+						value = escape(value);
 						break;
-					}
+					default: 
+						break;
+					
 				}
 
 				// Attempt to set the value of the parameter.
