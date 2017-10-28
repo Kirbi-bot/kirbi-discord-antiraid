@@ -16,7 +16,6 @@ module.exports = function (Kirbi) {
 			usage: '<parameter> <new value?>',
 			description: 'Accesses the servers antiraid parameters. Adding a value will update the parameter.',
 			process: (msg, suffix, isEdit, cb) => {
-				const member = msg.member;
 				const parameters = suffix.split(' ');
 				const parameter = parameters.shift().trim();
 				const settingTypes = AntiraidSettings.settingTypes();
@@ -53,9 +52,7 @@ module.exports = function (Kirbi) {
 				// If there is only one parameter, we just want to display the current value.
 				let value = antiraidSettings.settings[parameter];
 				if (parameters.length === 0) {
-					if (settingType === 'Channel') {
-						value = value ? value.id : 'none';
-					} else if (parameter === 'welcomeMessage') {
+					if (settingType === 'encodedString') {
 						value = unescape(value);
 					}
 
@@ -70,7 +67,7 @@ module.exports = function (Kirbi) {
 					case 'int': 
 						value = Math.max(0, Number.parseInt(value, 10));
 						break;
-					case 'string': 
+					case 'encodedString': 
 						value = escape(value);
 						break;
 					default: 
