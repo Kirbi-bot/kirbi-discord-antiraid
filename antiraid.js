@@ -34,9 +34,9 @@ module.exports = function (Kirbi) {
 						cb('Unable to set your guild settings for antiraid.', msg);
 						return;
 					}
-					const settings = new GuildAntiraidSettings({ 
-						guildId: guild.id, 
-						channelId: guild.id 
+					const settings = new GuildAntiraidSettings({
+						guildId: guild.id,
+						channelId: guild.id
 					});
 					Kirbi.antiraidGuilds[msg.guild.id] = new AntiraidSettings(guild, settings);
 					antiraidSettings = Kirbi.antiraidGuilds[msg.guild.id];
@@ -64,15 +64,15 @@ module.exports = function (Kirbi) {
 				value = parameters.join(' ').trim();
 				let message = `The ${parameter} antiraid setting has been set to '${value}'.`;
 				switch (settingType) {
-					case 'int': 
+					case 'int':
 						value = Math.max(0, Number.parseInt(value, 10));
 						break;
-					case 'encodedString': 
+					case 'encodedString':
 						value = escape(value);
 						break;
-					default: 
+					default:
 						break;
-					
+
 				}
 
 				// Attempt to set the value of the parameter.
