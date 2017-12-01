@@ -4,7 +4,7 @@ A module for [Kirbi](https://github.com/richardson-media-house/kirbi) to monitor
 ## Requires
 
 - [kirbi-discord](https://github.com/Richardson-Media-House/kirbi-discord).
-- [kirbi-discord](https://github.com/Richardson-Media-House/kirbi-mongodb).
+- [kirbi-mongodb](https://github.com/Richardson-Media-House/kirbi-mongodb).
 
 
 ## Usage
