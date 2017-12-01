@@ -9,8 +9,7 @@ module.exports = class antiraidSettings {
 		return {
 			channelId: 'string',
 			limit: 'int',
-			seconds: 'int',
-			welcomeMessage: 'encodedString'
+			seconds: 'int'
 		};
 	}
 };
